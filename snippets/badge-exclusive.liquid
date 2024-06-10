@@ -1,0 +1,23 @@
+{%- comment -%}
+Exclusive Badge
+- displays only on PDP, above the product title for exclusive products 
+
+********************************************
+Supported variables
+********************************************
+
+* product: the product (required)
+
+Example:
+  {%- render 'badge-exclusive', product: product -%}
+{%- endcomment -%}
+
+{%- if product.tags contains 'exclusive' 
+    or product.metafields.driver.filter_exclusives == true  -%}
+
+  <span 
+    class="badge badge--custom{% if template contains 'product' %} lg:mb-2{% endif %}">
+    Exclusive
+  </span>
+
+{%- endif -%}
