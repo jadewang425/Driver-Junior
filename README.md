@@ -86,12 +86,14 @@ npm i
 npm run dev
 ```
 
-this command runs 2 npm commands simultainiously:
+this command runs 2 npm commands simultaneously:
 ```sh
 dev:shopify: shopify theme dev --store $npm_package_config_store,
 dev:vite: vite,
 ```
 vite watches for changes in the frontend folder building & updating nesseccary files while theme dev watches for changes in base theme files.
+
+If you have recently been working in other Shopify sites, it's a good idea to enter `shopify auth logout` before running `npm run dev` to make sure you spin up a development theme in the correct Shopify store.
 
 To pull Theme Editor changes from your dev theme into your branch, run the following in your terminal immediately after stopping the `npm run dev` command, before committing your code:
 ```sh
