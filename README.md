@@ -126,6 +126,10 @@ Naming convention for sections should use the Prestige theme prefix schema:
 - Take care when modifying existing sections and snippets that new modifications do not affect existing uses of those sections/snippets. It's perfectly acceptable to duplicate an existing section/snippet to create a new one.
 
 ## Frameworks
+
+### Shopify Liquid
+Install the [Shopify Liquid VS Code Extension](https://shopify.dev/docs/storefronts/themes/tools/shopify-liquid-vscode) for syntax-highlighting, documentation, code-completion and more.
+
 ### Tailwind CSS
 This project uses [TailwindCSS](https://tailwindcss.com/) `v3` a mobile first utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup. Check out the amazing [documentation](https://tailwindcss.com/docs) and start adding classes to your elements.
 
