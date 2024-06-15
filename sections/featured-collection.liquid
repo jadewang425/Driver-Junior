@@ -1,1 +1,118 @@
+{%- assign color_scheme_hash = section.settings.color_scheme.settings.background_gradient | default: section.settings.color_scheme.settings.background | md5 -%}
 
+<div class="section-spacing color-scheme color-scheme--{{ section.settings.color_scheme.id }} color-scheme--bg-{{ color_scheme_hash }} {% if section.settings.separate_section_with_border %}bordered-section{% endif %}">
+  <div class="container">
+    <div class="gap-10 section-stack lg:gap-12">
+      {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, content: section.settings.content, text_alignment: 'center' -%}
+			
+      {%- assign ft_collection_products = section.settings.collection.products
+        | default: section.settings.collection.product_list
+      -%}
+      <featured-collection-slider class="splide">
+        <!-- Slider Navigation -->
+        <div class="relative mx-auto my-0 mb-12">
+          <div class="splide__arrows"></div>
+        </div> 
+
+        <div class="splide__track">
+          <div class="splide__list">
+            {%- for product in ft_collection_products limit: 4 -%}
+              <div class="splide__slide p-2">
+                {% render 'product-card',
+                  product: product,
+                  show_rating: true
+                %}
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      </featured-collection-slider>
+
+      <div class="text-center">
+        {%- if section.settings.button_link != blank -%}
+          {%- assign url = section.settings.button_link -%}
+        {% else %}
+          {% assign url = section.settings.collection.url %}
+        {%- endif -%}
+        {% render 'button', content: section.settings.button_text, href: url, background: section.settings.button_background, text_color: section.settings.button_text_color %}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.featured_collection.name",
+  "tag": "section",
+  "disabled_on": {
+    "templates": ["password"],
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "id": "collection",
+      "type": "collection",
+      "label": "Collection",
+    },
+    {
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:global.colors.scheme",
+			"default": "scheme-1"
+    },
+    {
+			"type": "header",
+			"content": "t:global.section.header_category"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "subheading",
+			"label": "t:global.text.subheading",
+			"default": "New arrivals"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "title",
+			"label": "t:global.text.heading",
+			"default": "Featured collection"
+		},
+		{
+			"type": "richtext",
+			"id": "content",
+			"label": "t:global.text.content"
+		},
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "t:global.text.button_text",
+      "default": "View all"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:global.text.button_link",
+      "info": "Default to collection URL"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "t:global.colors.button_background"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "t:global.colors.button_text"
+    },
+  ],
+  "presets": [
+    {
+    	"name": "t:sections.featured_collection.name"
+    }
+  ]
+}
+{% endschema %}

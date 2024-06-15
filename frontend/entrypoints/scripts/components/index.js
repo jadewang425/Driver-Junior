@@ -1,6 +1,7 @@
 import "./accordion";
 import "./complementary-products";
 import "./featured-product-slider";
+import "./featured-collection-slider";
 import "./load-more";
 import "./reveal-articles";
 import "./sticky-atc";

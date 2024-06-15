@@ -671,6 +671,15 @@
         }
       }
     },
+    "featured_collection": {
+      "name": "Featured collection",
+      "product": "Collection",
+      "presets": {
+        "featured_collection": {
+          "name": "Featured collection"
+        }
+      }
+    },
     "featured_product": {
       "name": "Featured product",
       "product": "Product",
